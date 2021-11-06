@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+
+    Create a New Entry
+ 
+{% endblock %}
+
+{% block body %}
+        {%if error%}
+            <h1>This content "{{entry}}" already exist!
+                Try another one</h1>
+            <ul>
+                <li><a href="{% url 'wiki' entry%}">{{entry}}</a></li>
+            </ul>
+            
+            <hr>
+        {%endif%} 
+        
+        <h2>Build your Encyclopedia</h2>
+        <form action="{% url 'create_page' %}" method="post" class="creat"> 
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="title" style="display:inline-block;">
+            <input type="submit" value="Save" style="display: inline-block;">
+            <hr>
+            <textarea name="content" placeholder="your content here" style=" width: 98%; height: 80vh; display: block;"></textarea>
+            
+        </form>
+
+{% endblock %}

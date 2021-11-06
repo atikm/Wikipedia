@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+          EDit: {{title}}
+{% endblock %}
+
+{% block body %}
+   
+        <h2">Edit Page:</h2>
+  
+            <form action="{% url 'editpage' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="title" value="{{title}}" readonly style="display:inline-block;" width="0">
+                <input type="submit" value="Save" style="display: inline-block;">
+                <hr>
+                <textarea name="content" placeholder="your content here" style=" width: 98%; height: 80vh; display: block;">{{page}}</textarea>
+            </form>
+             
+
+{% endblock %}
